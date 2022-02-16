@@ -1,0 +1,5 @@
+﻿  1030.c
+c:\users\tg\seungwoo\study\algorithmstudy\baekjoononlinejudge\1030\1030.c(20): warning C4244: '함수': '__int64'에서 'double'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+c:\users\tg\seungwoo\study\algorithmstudy\baekjoononlinejudge\1030\1030.c(22): warning C4244: '초기화 중': '__int64'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+c:\users\tg\seungwoo\study\algorithmstudy\baekjoononlinejudge\1030\1030.c(23): warning C4244: '초기화 중': '__int64'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  1030.vcxproj -> C:\Users\TG\Seungwoo\Study\AlgorithmStudy\BaekjoonOnlineJudge\Debug\1030.exe
