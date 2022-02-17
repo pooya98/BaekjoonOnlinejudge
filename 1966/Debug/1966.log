@@ -1,0 +1,3 @@
+﻿  1966.c
+c:\users\tg\seungwoo\study\algorithmstudy\baekjoononlinejudge\1966\1966.c(8): warning C4091: 'typedef ': 변수를 선언하지 않으면 'Node' 왼쪽은 무시됩니다.
+  1966.vcxproj -> C:\Users\TG\Seungwoo\Study\AlgorithmStudy\BaekjoonOnlineJudge\Debug\1966.exe
