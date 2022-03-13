@@ -1,0 +1,3 @@
+﻿  1007.c
+c:\users\tg\seungwoo\study\algorithmstudy\baekjoononlinejudge\1007\1007.c(66): warning C4244: '함수': '__int64'에서 'double'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  1007.vcxproj -> C:\Users\TG\Seungwoo\Study\AlgorithmStudy\BaekjoonOnlineJudge\Debug\1007.exe
