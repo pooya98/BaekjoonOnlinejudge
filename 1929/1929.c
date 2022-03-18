@@ -4,7 +4,8 @@
 int main(void)
 {
 	int M, N;
-	char arr[1000001] = {0};
+	char arr[1000001] = { 0 };
+	// BOJ -> int arr[1000001] = { 0 };
 	int index;
 
 	scanf("%d %d", &M, &N);
@@ -19,8 +20,7 @@ int main(void)
 		}
 	}
 
-	arr[1] = 5;
-
+	arr[1] = 2;
 	for (int i = M; i <= N; i++)
 		if (arr[i] < 2)
 			printf("%d\n", i);
