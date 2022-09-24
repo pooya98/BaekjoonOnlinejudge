@@ -55,7 +55,7 @@ int main(void)
     mergeSort(arr, 0, N - 1);
 
     arithmetic_mean = (double)sum / N;
-    if(arithmetic_mean < 1.0 && arithmetic_mean > -1.0)
+    if(arithmetic_mean < 0.5 && arithmetic_mean >= -0.5)
         arithmetic_mean = 0.0;
 
     median =  arr[(N - 1) / 2];

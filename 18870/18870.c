@@ -1,10 +1,10 @@
 #include <stdio.h>
 
 int N;
-int original_arr[100000];    
-int arr_to_sort[100000];
-int temp_arr[100000];
-int final_arr[100000];
+int original_arr[1000000];    
+int arr_to_sort[1000000];
+int temp_arr[1000000];
+int final_arr[1000000];
 int final_index = -1;
 
 void MergeSort(int start, int end)
@@ -83,11 +83,6 @@ int main(void)
 
     MergeSort(0, N - 1);
     removeDuplicate(0, N - 1);
-
-    for(int i = 0; i < N; i++)
-        printf("%d ", final_arr[i]);
-
-    printf("\n");
 
     for(int i = 0; i < N; i++){
         printf("%d ", searchData(original_arr[i]));
