@@ -36,9 +36,6 @@ int main(void){
         scanf("%d", &n);
         scanf("%s", arr_string);
         
-
-        //printf("%s\n", arr_string);
-
         int arr_string_length = strlen(arr_string);
 
         if(arr_string_length != 2){
@@ -55,12 +52,7 @@ int main(void){
                 sum += (int)(arr_string[j] - '0');
             }
         }
-
-        // for(int j = 0; j <= arr_top; j++)
-        //     printf("%d ", arr[j]);
-
-        // printf("\n");
-
+        
         front = 0;
         rear = arr_top;
 

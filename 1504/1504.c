@@ -1,12 +1,15 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+/* 상수 정의 */
 #define NO 0
 #define YES 1
 
 #define INF 100000000
 #define MAX_SIZE 400000
 
+
+/* 구조체 정의 */
 typedef struct _node{
     int dest;
     int distance;
@@ -23,6 +26,16 @@ typedef struct{
     int size;
 }Heap;
 
+
+/* 전역변수 정의 */
+int V, E, K;
+node* adj_list[801];
+int visited[801];
+int distance[801];
+int visit_count = 0;
+
+
+/* 함수 정의 */
 void min_heap_insert(Heap* heap, element item){
     int i = ++(heap->size);
 
@@ -64,13 +77,6 @@ element min_heap_delete(Heap* heap){
     return item;
 }
 
-int V, E, K;
-
-node* adj_list[20001];
-int visited[20001];
-int distance[20001];
-int visit_count = 0;
-
 element get_nearlist_and_not_yet_visited(Heap* heap){
     if(heap->size > 0){
         return min_heap_delete(heap);
@@ -82,42 +88,20 @@ element get_nearlist_and_not_yet_visited(Heap* heap){
     }
 }
 
-int main(void)
-{
-    Heap heap;
-    node* pointer;
-    element temp_element;
+void dijkstra(int start){
 
-    heap.size = 0;
-
-    scanf("%d %d", &V, &E);
-    scanf("%d", &K);
-
-    for(int i = 1; i <= 20000; i++){
-        adj_list[i] = NULL;
+    for(int i = 1; i <= 800; i++){
         visited[i] = NO;
         distance[i] = INF;
     }
 
-    for(int i = 0; i < E; i++){
-        int v1, v2, weight;
-        scanf("%d %d %d", &v1, &v2, &weight);
+    Heap heap;
+    element temp_element;
+    node* pointer;
 
-        node* newNode = (node*)malloc(sizeof(node));
-        newNode->dest = v2;
-        newNode->distance = weight;
-        newNode->next = NULL;
+    heap.size = 0;
 
-        if(adj_list[v1]){
-            newNode->next = adj_list[v1];
-            adj_list[v1] = newNode;
-        }
-        else{
-            adj_list[v1] = newNode;
-        }
-    }
-
-    temp_element.index = K;
+    temp_element.index = start;
     temp_element.key = 0;
 
     min_heap_insert(&heap, temp_element);
@@ -147,15 +131,75 @@ int main(void)
             pointer = pointer->next;
         }
     }
+}
 
-    for(int i = 1; i <= V; i++){
-        if(distance[i] == INF)
-            printf("INF\n");
-        else
-            printf("%d\n", distance[i]);
+int main(void)
+{
+    node* pointer;
+
+    scanf("%d %d", &V, &E);
+
+    for(int i = 1; i <= 800; i++){
+        adj_list[i] = NULL;
     }
 
-    
+    for(int i = 0; i < E; i++){
+        int v1, v2, weight;
+        scanf("%d %d %d", &v1, &v2, &weight);
+
+        node* newNode = (node*)malloc(sizeof(node));
+        newNode->dest = v2;
+        newNode->distance = weight;
+        newNode->next = NULL;
+
+        if(adj_list[v1]){
+            newNode->next = adj_list[v1];
+            adj_list[v1] = newNode;
+        }
+        else{
+            adj_list[v1] = newNode;
+        }
+
+        newNode = (node*)malloc(sizeof(node));
+        newNode->dest = v1;
+        newNode->distance = weight;
+        newNode->next = NULL;
+
+        if(adj_list[v2]){
+            newNode->next = adj_list[v2];
+            adj_list[v2] = newNode;
+        }
+        else{
+            adj_list[v2] = newNode;
+        }
+    }
+
+    int v1, v2;
+    scanf("%d %d", &v1, &v2);
+
+    dijkstra(1);
+    int start_to_v1 = distance[v1];
+    int start_to_v2 = distance[v2];
+
+    dijkstra(v1);
+    int v1_to_v2  = distance[v2];
+    int v1_to_end = distance[V];
+
+    dijkstra(v2);
+    int v2_to_v1  = distance[v1];
+    int v2_to_end = distance[V];
+
+    int v1_first = start_to_v1 + v1_to_v2 + v2_to_end;
+    int v2_first = start_to_v2 + v2_to_v1 + v1_to_end;
+
+    if((v1_first >= INF) && (v2_first >= INF))
+        printf("-1");
+    else{
+        if(v1_first < v2_first)
+            printf("%d", v1_first);
+        else
+            printf("%d", v2_first);
+    }
 
     for(int i = 1; i <= V; i++){
         pointer = adj_list[i];
