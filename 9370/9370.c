@@ -4,12 +4,12 @@
 #define NO 0
 #define YES 1
 
-#define INF  1000000
+#define INF  987654321
 #define MAX_SIZE 2001
 
 typedef struct _node{
     int dest;
-    int distance;
+    int dist;
     struct _node* next;
 }node;
 
@@ -118,6 +118,7 @@ void dijkstra(Heap* heap, int start){
     temp_element.key = 0;
 
     min_heap_insert(heap, temp_element);
+    distance[start] = 0;
 
     while(heap->size > 0){
         element nearlist_element = get_nearlist_and_not_yet_visited(heap);
@@ -126,18 +127,20 @@ void dijkstra(Heap* heap, int start){
             continue;
         }
 
-        distance[nearlist_element.index] = nearlist_element.key;
+        //distance[nearlist_element.index] = nearlist_element.key;
 
         pointer = adj_list[nearlist_element.index];
 
         while(pointer){
             int next_index = pointer->dest;
-            long long next_dist = pointer->distance + distance[nearlist_element.index];
+            long long next_dist = pointer->dist + distance[nearlist_element.index];
 
-            temp_element.key = next_dist;
-            temp_element.index = next_index;
-
-            min_heap_insert(heap, temp_element);
+            if(distance[next_index] > next_dist){
+                temp_element.key = next_dist;
+                temp_element.index = next_index;
+                min_heap_insert(heap, temp_element);
+                distance[next_index] = next_dist;
+            }
 
             pointer = pointer->next;
         }
@@ -175,13 +178,13 @@ int main(void)
             pointer = (node*)malloc(sizeof(node));
             pointer->next = adj_list[a];
             pointer->dest = b;
-            pointer->distance = d;
+            pointer->dist = d;
             adj_list[a] = pointer;
 
             pointer = (node*)malloc(sizeof(node));
             pointer->next = adj_list[b];
             pointer->dest = a;
-            pointer->distance = d;
+            pointer->dist = d;
             adj_list[b] = pointer;
         }
 
