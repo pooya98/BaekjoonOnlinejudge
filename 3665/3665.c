@@ -38,11 +38,12 @@ int main(void)
         }
 
         for(int j = 1; j <= n; j++){
-            adj_matrix[j][j] = 0;
             indegree[j] = 0;
         }
 
         new_rank_top = -1;
+        front = 0;
+        rear = -1;
 
         for(int j = 1; j <= n; j++){
             scanf("%d", &input_list[j]);
@@ -106,7 +107,7 @@ int main(void)
             }
         }
 
-        printf("->");
+        //printf("->");
         if(flag == NOT_CLEAR){
             if(new_rank_top == (n - 1)){
                 printf("?");
