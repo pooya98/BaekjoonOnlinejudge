@@ -2,7 +2,7 @@
 #include <stdlib.h>
 
 #define MAX_VERTICES 32000 + 1
-#define MAX_HEAP_SIZE 100
+#define MAX_HEAP_SIZE 32000 + 1
 
 typedef struct _node{
     int dest;
