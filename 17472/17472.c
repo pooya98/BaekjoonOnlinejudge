@@ -4,7 +4,7 @@
 #define LAND -1
 #define N_MAX 10 + 1
 #define M_MAX 10 + 1
-#define MAX_QUEUE_SIZE 100 + 1
+#define MAX_QUEUE_SIZE 1000 + 1
 #define MAX_EDGES_NUM 500000 + 1
 #define MAX_ISLANDS_NUM 6 + 1
 
