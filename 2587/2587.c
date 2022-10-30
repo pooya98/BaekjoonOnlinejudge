@@ -17,8 +17,10 @@ int main(void)
         int min_index = i;
 
         for(int j = i + 1; j < 5; j++)
-            if(min > arr[j])
+            if(min > arr[j]){
+                min = arr[j];
                 min_index = j;
+            }
 
         int temp = arr[i];
         arr[i] = arr[min_index];
