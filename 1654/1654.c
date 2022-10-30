@@ -2,13 +2,13 @@
 
 #define MAX_K 10000 + 1
 
-int LAN_line[MAX_K];
-int max_piece_len = 0;
+long long LAN_line[MAX_K];
+long long max_piece_len = 0;
 long long result = 0;
 
 int K, N;
 
-long long get_piece_num(int divisor){
+long long get_piece_num(long long divisor){
     long long return_value = 0;
 
     for(int i = 0; i < K; i++)
@@ -22,7 +22,7 @@ int main(void)
     scanf("%d %d", &K, &N);
 
     for(int i = 0; i < K; i++){
-        scanf("%d", &LAN_line[i]);
+        scanf("%lld", &LAN_line[i]);
 
         if(max_piece_len < LAN_line[i])
             max_piece_len = LAN_line[i];
